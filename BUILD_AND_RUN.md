@@ -1,3 +1,7 @@
+---
+noIndex: true
+---
+
 # Building and Running Simulations
 
 This document provides general guidance on how one might compile the C++ source code for this simulation framework and how to run a simulation.
@@ -10,12 +14,12 @@ This document provides general guidance on how one might compile the C++ source 
 
 The C++ source files appear to use several external libraries for numerical computation and parallel processing. You would need to have these libraries installed on your system. Based on typical include headers found in such projects, these may include:
 
-*   **PETSc:** For solving partial differential equations and linear algebra, especially in parallel.
-*   **MPI (Message Passing Interface):** For distributed memory parallelization (e.g., MPICH, OpenMPI).
-*   **SLEPc:** For solving large-scale eigenvalue problems (often used with PETSc).
-*   **Armadillo:** For linear algebra and scientific computing in C++.
-*   **MAGMA (Matrix Algebra on GPU and Multicore Architectures):** For GPU-accelerated linear algebra routines.
-*   **Intel MKL (Math Kernel Library):** For optimized math routines, including BLAS, LAPACK.
+* **PETSc:** For solving partial differential equations and linear algebra, especially in parallel.
+* **MPI (Message Passing Interface):** For distributed memory parallelization (e.g., MPICH, OpenMPI).
+* **SLEPc:** For solving large-scale eigenvalue problems (often used with PETSc).
+* **Armadillo:** For linear algebra and scientific computing in C++.
+* **MAGMA (Matrix Algebra on GPU and Multicore Architectures):** For GPU-accelerated linear algebra routines.
+* **Intel MKL (Math Kernel Library):** For optimized math routines, including BLAS, LAPACK.
 
 ### Example Compilation Command (g++)
 
@@ -46,13 +50,13 @@ g++ -std=c++11 -O2 \
 
 **Important Considerations:**
 
-*   **Compiler:** Instead of `g++` directly, if you are using MPI, you would typically use an MPI wrapper compiler like `mpicxx` which handles MPI headers and libraries automatically.
-    *   Example: `mpicxx -std=c++11 -O2 ... -o nemo_simulation ... -larmadillo -lpetsc -lslepc ...`
-*   **File List:** Ensure all necessary `.cpp` files are included in the compilation command. A `main.cpp` file containing the `main()` function to drive the simulation would be essential.
-*   **Paths:** Replace `/path/to/...` with the actual installation paths of the libraries on your system.
-*   **Library Linking:** The `-l` flags (e.g., `-lpetsc`, `-larmadillo`) link against the libraries. The order of libraries can sometimes matter. You may also need to link against BLAS and LAPACK if not included with Armadillo or MKL.
-*   **Optimization Flags:** `-O2` or `-O3` are common optimization flags. `-g` can be added for debugging symbols.
-*   **C++ Standard:** `-std=c++11` (or a newer standard like `c++14`, `c++17`) might be required depending on the C++ features used.
+* **Compiler:** Instead of `g++` directly, if you are using MPI, you would typically use an MPI wrapper compiler like `mpicxx` which handles MPI headers and libraries automatically.
+  * Example: `mpicxx -std=c++11 -O2 ... -o nemo_simulation ... -larmadillo -lpetsc -lslepc ...`
+* **File List:** Ensure all necessary `.cpp` files are included in the compilation command. A `main.cpp` file containing the `main()` function to drive the simulation would be essential.
+* **Paths:** Replace `/path/to/...` with the actual installation paths of the libraries on your system.
+* **Library Linking:** The `-l` flags (e.g., `-lpetsc`, `-larmadillo`) link against the libraries. The order of libraries can sometimes matter. You may also need to link against BLAS and LAPACK if not included with Armadillo or MKL.
+* **Optimization Flags:** `-O2` or `-O3` are common optimization flags. `-g` can be added for debugging symbols.
+* **C++ Standard:** `-std=c++11` (or a newer standard like `c++14`, `c++17`) might be required depending on the C++ features used.
 
 A proper `Makefile` or `CMakeLists.txt` file is highly recommended for managing compilation in a real project, as it automates dependency tracking and simplifies the build process.
 
@@ -68,8 +72,8 @@ If the simulation is intended to run on a single processor or if MPI is not used
 ./nemo_simulation input.dat
 ```
 
-*   `./nemo_simulation`: This is the compiled executable.
-*   `input.dat`: This is a hypothetical input file. The actual name and format of this file would depend on how the program parses its inputs (as described conceptually in `INPUT_OPTIONS.md`). This file would contain the parameters controlling the simulation.
+* `./nemo_simulation`: This is the compiled executable.
+* `input.dat`: This is a hypothetical input file. The actual name and format of this file would depend on how the program parses its inputs (as described conceptually in `INPUT_OPTIONS.md`). This file would contain the parameters controlling the simulation.
 
 ### Parallel Execution (MPI)
 
@@ -79,10 +83,10 @@ If the program has been compiled with MPI support for distributed memory paralle
 mpirun -np 4 ./nemo_simulation input.dat
 ```
 
-*   `mpirun`: The command to run MPI applications.
-*   `-np 4`: Specifies the number of processes to launch (e.g., 4 processes). This should generally not exceed the number of available CPU cores for CPU-bound tasks.
-*   `./nemo_simulation`: The executable.
-*   `input.dat`: The input parameter file, which all MPI processes would typically read.
+* `mpirun`: The command to run MPI applications.
+* `-np 4`: Specifies the number of processes to launch (e.g., 4 processes). This should generally not exceed the number of available CPU cores for CPU-bound tasks.
+* `./nemo_simulation`: The executable.
+* `input.dat`: The input parameter file, which all MPI processes would typically read.
 
 The simulation framework would need to be designed internally to distribute the workload across the MPI processes (e.g., PETSc and SLEPc handle much of this for their respective tasks).
 

@@ -1,3 +1,7 @@
+---
+noIndex: true
+---
+
 # Project Title
 
 ## Overview
@@ -6,15 +10,15 @@ This project is a comprehensive software solution designed to address the proble
 
 ## Purpose
 
-The primary purpose of this project is to [describe the problem the project solves]. It seeks to achieve this by [mention the core functionalities and goals].
+The primary purpose of this project is to \[describe the problem the project solves]. It seeks to achieve this by \[mention the core functionalities and goals].
 
 ## Main Components
 
 The project is comprised of the following main components:
 
-* **Component A:** [Briefly describe Component A and its role]
-* **Component B:** [Briefly describe Component B and its role]
-* **Component C:** [Briefly describe Component C and its role]
+* **Component A:** \[Briefly describe Component A and its role]
+* **Component B:** \[Briefly describe Component B and its role]
+* **Component C:** \[Briefly describe Component C and its role]
 
 ## Architecture
 
@@ -24,13 +28,13 @@ For a detailed explanation of the simulation framework's architecture and how it
 
 Detailed documentation for each of the core C++ components can be found below:
 
-*   [Greensolver](Greensolver.md)
-*   [Propagation](Propagation.md)
-*   [PropagationUtilities](PropagationUtilities.md)
-*   [ScatteringBackwardRGFSolver](ScatteringBackwardRGFSolver.md)
-*   [ScatteringForwardRGFSolver](ScatteringForwardRGFSolver.md)
-*   [Schroedinger](Schroedinger.md)
-*   [Self_energy](Self_energy.md)
+* [Greensolver](Greensolver.md)
+* [Propagation](Propagation.md)
+* [PropagationUtilities](PropagationUtilities.md)
+* [ScatteringBackwardRGFSolver](ScatteringBackwardRGFSolver.md)
+* [ScatteringForwardRGFSolver](ScatteringForwardRGFSolver.md)
+* [Schroedinger](Schroedinger.md)
+* [Self\_energy](Self_energy.md)
 
 ## Documentation Usage
 
